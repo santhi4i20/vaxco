@@ -74,3 +74,80 @@ EXCEPTION
 END;
 
 
+
+tabela estado:
+cod_estado
+nom_estado
+cod_pais
+
+tabela cidade:
+COD_CIDADE
+NOM_CIDADE
+COD_ESTADO
+
+tabela cliente
+COD_CLIENTE
+NOM_CLIENTE
+DES_RAZAO_SOCIAL
+TIP_PESSOA
+NUM_CPF_CNPJ
+DAT_CADASTRO
+DAT_CANCELAMENTO
+STA_ATIVO
+
+tabela cliente vendedor
+cod_cliente
+cod_vendedor
+dat_inicio
+dat_termino
+
+endereco_cliente
+seq_endereco_cliente
+cod_tipo_endereco
+COD_CLIENTE
+DES_ENDERECO
+NUM_ENDERECO
+DES_COMPLEMENTO
+NUM_CEP
+DES_BAIRRO
+COD_CIDADE
+STA_ATIVO
+DAT_CADASTRO
+DAT_CANCELAMENTO
+
+tabela estoque
+cod_estoque
+nom_estoque
+
+tabela estoque produto
+cod_produto
+cod_estoque
+dat_estoque
+qtd_produto
+
+tabela hitórico pedido
+SEQ_HISTORICO_PEDIDO
+COD_PEDIDO
+COD_CLIENTE
+DAT_PEDIDO
+DAT_CANCELAMENTO
+DAT_ENTREGA
+VAL_TOTAL_PEDIDO
+VAL_DESCONTO
+SEQ_ENDERECO_CLIENTE
+COD_VENDEDOR
+
+tabela item pedido
+cod_pedido
+cod_item_pedido
+cod_produto
+qtd_item
+val_unitario_item
+val_desconto_item
+
+tabela movimento estoque
+seq_movimento_estoque
+cod_produto
+dat_movimento_estoque
+qtd_movimentacao_estoque
+cod_tipo_movimento_estoque
