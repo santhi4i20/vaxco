@@ -33,4 +33,44 @@ Saída: Exibição via DBMS_OUTPUT
 Parâmetro: p_cod_vendedor NUMBER
 Saída: Exibição via DBMS_OUTPUT
 
+CREATE OR REPLACE FUNCTION fnc_valor_total_pedidos_por_estado(p_uf IN VARCHAR2)
+
+RETURN NUMBER
+
+IS
+    v_valor_total    NUMBER;
+
+BEGIN
+
+
+
+    SELECT SUM(HP.VAL_TOTAL_PEDIDO)
+    INTO v_valor_total
+    FROM HISTORICO_PEDIDO HP
+    JOIN PEDIDO P ON P.COD_PEDIDO = HP.COD_PEDIDO
+    JOIN ENDERECO_CLIENTE EC ON EC.COD_CLIENTE = P.COD_CLIENTE
+    JOIN CIDADE C ON C.COD_CIDADE = EC.COD_CIDADE
+    JOIN ESTADO E ON E.COD_ESTADO = C.COD_ESTADO
+    WHERE E.UF = p_uf
+    AND P.DAT_ENTREGA IS NOT NULL;
+
+
+
+    IF v_valor_total IS NULL THEN
+        RETURN 0;
+    ELSE
+        RETURN v_valor_total;
+    END IF;
+
+
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+
+    WHEN OTHERS THEN
+        RETURN 0;
+
+END;
+
 
